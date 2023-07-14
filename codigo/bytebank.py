@@ -6,13 +6,16 @@ class Funcionario:
         self._data_nascimento = data_nascimento
         self._salario = salario
 
+
     @property
     def nome(self):
         return self._nome
 
+
     @property
     def salario(self):
         return self._salario
+
 
     def idade(self):
         data_nascimento_quebrada = self._data_nascimento.split('/')
@@ -20,16 +23,23 @@ class Funcionario:
         ano_atual = date.today().year
         return ano_atual - int(ano_nascimento)
 
+
     def sobrenome(self):
         nome_completo = self.nome.strip()
         nome_quebrado = nome_completo.split(' ')
         return nome_quebrado[-1]
 
-    def decrescimo_salario(self):
+
+    def _eh_socio(self):
         sobrenomes = ['Bragança', 'Windsor', 'Bourbon', 'Yamato', 'Al Saud', 'Khan', 'Tudor', 'Ptolomeu']
-        if self._salario >= 100000 and (self.sobrenome in sobrenomes):
+        return self._salario >= 100000 and (self.sobrenome in sobrenomes)
+
+
+    def decrescimo_salario(self):
+        if self._eh_socio:
             decrescimo = self._salario * 0.1
             self._salario = self._salario - decrescimo
+
 
     def calcular_bonus(self):
         valor = self._salario * 0.1
@@ -37,5 +47,7 @@ class Funcionario:
             valor = 0
         return valor
 
+
     def __str__(self):
         return f'Funcionario({self._nome}, {self._data_nascimento}, {self._salario})'
+    
