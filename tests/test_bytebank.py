@@ -14,3 +14,12 @@ class TestClass:
         #Then-desfecho
         assert resultado == esperado
 
+    def test_quando_sobrenome_recebe_Robert_Zimmermann_deve_retornar_Zimmermann():
+        entrada = 'Robert Zimmermann'
+        esperado = 'Zimmermann'
+
+        robert = Funcionario(entrada, '31/07/2003', 1111)
+
+        resultado = robert.sobrenome()
+
+        assert resultado == esperado
